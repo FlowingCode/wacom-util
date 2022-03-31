@@ -1,9 +1,9 @@
 {
-  "name": "wacom-util",
-  "version": "0.1.5",
+  "name": "smashingpackage/wacom-util",
+  "version": "0.1.0",
   "author": {
-    "name": "Godfrey Zubiaga",
-    "email": "godfreyzubiaga@gmail.com",
+    "name": "Hank Gonzales",
+    "email": "gonzales5558@gmail.com",
     "url": "https://v2.godfreyzubiaga.com"
   },
   "scripts": {
@@ -21,12 +21,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/godfreyzubiaga/wacom-util.git"
+    "url": "git+https://github.com/HankFLX/wacom-util.git"
   },
   "bugs": {
-    "url": "https://github.com/godfreyzubiaga/wacom-util/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/godfreyzubiaga/wacom-util#readme",
+  "homepage": "https://github.com/HankFLX/wacom-util#readme",
   "readme": "/README.md",
   "dependencies": {
     "big-integer": "^1.6.51",
