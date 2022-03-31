@@ -195,12 +195,12 @@ function disconnect() {
   return deferred.promise;
 }
 
-window.addEventListener("beforeunload", (e) => {
-  const confirmationMessage = "";
-  WacomGSS.STU.close();
-  (e || window.event).returnValue = confirmationMessage; // Gecko + IE
-  return confirmationMessage; // Webkit, Safari, Chrome
-});
+// window.addEventListener("beforeunload", (e) => {
+//   const confirmationMessage = "";
+//   WacomGSS.STU.close();
+//   (e || window.event).returnValue = confirmationMessage; // Gecko + IE
+//   return confirmationMessage; // Webkit, Safari, Chrome
+// });
 
 // Error-derived object for Device Control App not ready exception
 function DCANotReady() {}
