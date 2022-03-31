@@ -4,7 +4,7 @@
   "author": {
     "name": "Hank Gonzales",
     "email": "gonzales5558@gmail.com",
-    "url": "https://v2.godfreyzubiaga.com"
+    "url": ""
   },
   "scripts": {
     "build": "npm run build:cjs && npm run build:esm",
