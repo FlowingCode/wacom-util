@@ -3664,4 +3664,4 @@ WacomGSS.STUConstructor = (function() {
 
 WacomGSS.STU = new WacomGSS.STUConstructor();
 
-// export default WacomGSS;
+export default WacomGSS;
