@@ -50,7 +50,7 @@ let isDown: boolean;
 let base64image: string;
 let propFunction: (arg0: string) => void;
 let m_btns: any;
-
+let parentWrapper = '';
 let retry = 0;
 function checkForSigCaptX() {
   // Establishing a connection to SigCaptX Web Service can take a few seconds,
@@ -122,7 +122,7 @@ function Point(this: any, x: number, y: number) {
   this.y = y;
 }
 
-function createModalWindow(width: number, height: number) {
+function createModalWindow(width: number, height: number, wrapperClass: any) {
   modalBackground = document.createElement("div");
   modalBackground.id = "modal-background";
   modalBackground.className = "active";
@@ -137,12 +137,15 @@ function createModalWindow(width: number, height: number) {
   formDiv.style.left = `${window.innerWidth / 2 - width / 2}px`;
   formDiv.style.width = `${width}px`;
   formDiv.style.height = `${height}px`;
-  document.getElementsByTagName("body")[0].appendChild(formDiv);
+  formDiv.style.marginTop = `${height / 2}px`;
+  formDiv.style.zIndex = "1001";
+  document.getElementsByTagName(wrapperClass)[0].appendChild(formDiv);
 
   canvas = document.createElement("canvas");
   canvas.id = "myCanvas";
   canvas.height = formDiv.offsetHeight;
   canvas.width = formDiv.offsetWidth;
+  canvas.style.border = "thin solid black";
   formDiv.appendChild(canvas);
   ctx = canvas.getContext("2d");
 
@@ -206,7 +209,8 @@ function disconnect() {
 function DCANotReady() {}
 DCANotReady.prototype = new Error();
 
-function tabletDemo(passToProps: (string: any) => void) {
+function tabletDemo(passToProps: (string: any) => void, wrapperClass) {
+  parentWrapper = wrapperClass;
   propFunction = passToProps;
   const p = new WacomGSS.STU.Protocol();
   let intf: any;
@@ -269,7 +273,7 @@ function tabletDemo(passToProps: (string: any) => void) {
     })
     .then((message: any) => {
       m_capability = message;
-      createModalWindow(m_capability.screenWidth, m_capability.screenHeight);
+      createModalWindow(m_capability.screenWidth, m_capability.screenHeight, wrapperClass);
       return tablet.getInformation();
     })
     .then((message: any) => {
@@ -359,7 +363,7 @@ function tabletDemo(passToProps: (string: any) => void) {
       return m_encodingMode;
     })
     .then((message: any) => {
-      addButtons();
+      addButtons(wrapperClass);
       const canvasImage = canvas.toDataURL("image/jpeg");
       return WacomGSS.STU.ProtocolHelper.resizeAndFlatten(
         canvasImage,
@@ -441,11 +445,11 @@ function tabletDemo(passToProps: (string: any) => void) {
       } else {
         // Some other error - Inform the user and closedown
         alert(`tabletDemo failed:\n${ex}`);
-        setTimeout(() => close(), 0);
+        setTimeout(() => close(wrapperClass), 0);
       }
     });
 }
-function addButtons() {
+function addButtons(wrapperClass) {
   m_btns = new Array(3);
   m_btns[0] = new Button();
   m_btns[1] = new Button();
@@ -667,11 +671,17 @@ function generateImage() {
 
 function close() {
   // Clear handler for Device Control App timeout
+  let close
+  if (parentWrapper !== '') {
+      close = parentWrapper
+  } else {
+      close = "body"
+  }
   WacomGSS.STU.onDCAtimeout = null;
 
   disconnect();
   document.getElementsByTagName("body")[0].removeChild(modalBackground);
-  document.getElementsByTagName("body")[0].removeChild(formDiv);
+  document.getElementsByTagName(close)[0].removeChild(formDiv);
 }
 
 function onCanvasClick(event: { pageX: number; pageY: number }) {
