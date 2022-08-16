@@ -4,7 +4,7 @@ Simple Wacom Signature pad integration to your web apps.
 
 ## Installation
 
-`npm i wacom-util`
+`npm i @smashingpackage/wacom-sigpad-utl`
 
 ## Implementation
 
@@ -23,12 +23,12 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className='MyClass'>
       <button
         type="button"
         id="signButton"
         value="Start demo"
-        onClick={() => showWacomSignPad(captureSignature)}
+        onClick={() => showWacomSignPad(captureSignature, 'MyClass')}
       >
         Sign
       </button>
@@ -42,4 +42,4 @@ export default App;
 
 ## LICENSE
 
-MIT license, Copyright (c) 2022 Godfrey Zubiaga
+MIT license, Copyright (c) 2022 Optima
