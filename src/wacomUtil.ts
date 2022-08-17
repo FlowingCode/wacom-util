@@ -139,7 +139,7 @@ function createModalWindow(width: number, height: number, wrapperClass: any) {
   formDiv.style.height = `${height}px`;
   formDiv.style.marginTop = `${height / 2}px`;
   formDiv.style.zIndex = "1001";
-  document.getElementsByTagName(wrapperClass)[0].appendChild(formDiv);
+  document.getElementsByClassName(wrapperClass)[0].appendChild(formDiv);
 
   canvas = document.createElement("canvas");
   canvas.id = "myCanvas";
@@ -681,7 +681,7 @@ function close() {
 
   disconnect();
   document.getElementsByTagName("body")[0].removeChild(modalBackground);
-  document.getElementsByTagName(close)[0].removeChild(formDiv);
+  document.getElementsByClassName(close)[0].removeChild(formDiv);
 }
 
 function onCanvasClick(event: { pageX: number; pageY: number }) {
