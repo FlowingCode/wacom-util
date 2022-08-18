@@ -652,8 +652,8 @@ function processPoint(
 function generateImage() {
   const signatureCanvas = document.createElement("canvas");
   signatureCanvas.id = "signatureCanvas";
-  signatureCanvas.height = 200;
-  signatureCanvas.width = 350;
+  signatureCanvas.height = 120;
+  signatureCanvas.width = 320;
   const signatureCtx: any = signatureCanvas.getContext("2d");
 
   clearCanvas(signatureCanvas, signatureCtx);
