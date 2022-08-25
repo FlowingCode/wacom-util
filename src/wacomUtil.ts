@@ -133,12 +133,12 @@ function createModalWindow(width: number, height: number, wrapperClass: any) {
   formDiv = document.createElement("div");
   formDiv.id = "signatureWindow";
   formDiv.className = "active";
-  formDiv.style.top = `${window.innerHeight / 2 - height / 2}px`;
-  formDiv.style.left = `${window.innerWidth / 2 - width / 2}px`;
+  formDiv.style.top = "50%";
+  formDiv.style.left = "50%";
   formDiv.style.width = `${width}px`;
   formDiv.style.height = `${height}px`;
-  formDiv.style.marginTop = `${height / 2}px`;
   formDiv.style.zIndex = "1001";
+  formDiv.style.transform = "translate(-50%, -50%)";
   document.getElementsByClassName(wrapperClass)[0].appendChild(formDiv);
 
   canvas = document.createElement("canvas");
@@ -444,7 +444,7 @@ function tabletDemo(passToProps: (string: any) => void, wrapperClass) {
         setTimeout(tabletDemo, 1000);
       } else {
         // Some other error - Inform the user and closedown
-        alert(`tabletDemo failed:\n${ex}`);
+        alert(`wacom sigpad failed:\n${ex}`);
         setTimeout(() => close(wrapperClass), 0);
       }
     });
