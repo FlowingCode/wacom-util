@@ -21,12 +21,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HankFLX/wacom-util.git"
+    "url": "git+https://github.com/FlowingCode/wacom-util.git"
   },
   "bugs": {
     "url": ""
   },
-  "homepage": "https://github.com/HankFLX/wacom-util#readme",
+  "homepage": "https://github.com/FlowingCode/wacom-util.git#readme",
   "readme": "/README.md",
   "dependencies": {
     "big-integer": "^1.6.51",
