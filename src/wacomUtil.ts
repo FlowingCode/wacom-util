@@ -702,4 +702,4 @@ function onCanvasClick(event: { pageX: number; pageY: number }) {
   }
 }
 
-export { base64image, tabletDemo };
+export { base64image, tabletDemo, generateImage, close };
